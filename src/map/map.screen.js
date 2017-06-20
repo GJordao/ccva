@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { StackNavigator } from 'react-navigation';
+//Helpers
+import navigatorOptions from './../navigators/helpers/navigationOptions.helper';
 
 const styles = StyleSheet.create({
     icon: {
@@ -34,8 +36,5 @@ class MapScreenComponent extends Component {
 const navigatorRoute = {
     'Mapa': { screen: MapScreenComponent }
 };
-
-const navigatorOptions = {
-}
 
 export default MapScreen = StackNavigator(navigatorRoute, navigatorOptions);

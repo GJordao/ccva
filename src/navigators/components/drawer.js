@@ -34,7 +34,6 @@ const style = StyleSheet.create({
 export default class Drawer extends Component {
     constructor(props) {
         super(props);
-        console.log(props);
     }
 
     renderSeparator() {

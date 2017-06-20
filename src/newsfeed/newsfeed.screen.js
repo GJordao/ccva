@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { StackNavigator } from 'react-navigation';
+//Helpers
+import navigatorOptions from './../navigators/helpers/navigationOptions.helper';
 //Custom components
 import TagBar from './tagBar';
 import News from './news';
+import NewsScreen from './news/news.screen';
 //API
 import ApiHelper from './../api';
 
@@ -11,8 +14,9 @@ const styles = StyleSheet.create({
     icon: {
         width: 35,
         height: 35,
-        marginLeft: 5
-    },
+        marginLeft: 5,
+        tintColor: 'white'
+    }
 });
 
 class NewsfeedScreenComponent extends Component {
@@ -37,7 +41,6 @@ class NewsfeedScreenComponent extends Component {
 
     componentWillMount() {
         ApiHelper.fetchContent('MTM1NTY4Mjg4MQ/news').then((response) => {
-            console.log(response);
             this.setState({
                 hasLoaded: true,
                 news: response
@@ -47,16 +50,16 @@ class NewsfeedScreenComponent extends Component {
 
     // Change that view to be a separator
     render() {
-        if(!this.state.hasLoaded) {
+        if (!this.state.hasLoaded) {
             return (<Text>Loading...</Text>);
         }
         return (
             <View>
                 <TagBar />
-                <View style={[{height: 1}, {backgroundColor: 'black'}]} />
+                <View style={[{ height: 1 }, { backgroundColor: 'black' }]} />
                 <ScrollView>
                     {this.state.news.map((news) => {
-                        return <News key={news.id} news={news} />
+                        return <News key={news.id} navigation={this.props.navigation} news={news} />
                     })}
                 </ScrollView>
             </View>
@@ -65,10 +68,11 @@ class NewsfeedScreenComponent extends Component {
 }
 
 const navigatorRoute = {
-    Newsfeed: { screen: NewsfeedScreenComponent }
+    Newsfeed: { screen: NewsfeedScreenComponent },
+    News: {
+        path: 'news/:news',
+        screen: NewsScreen
+    }
 };
-
-const navigatorOptions = {
-}
 
 export default NewsfeedScreen = StackNavigator(navigatorRoute, navigatorOptions);

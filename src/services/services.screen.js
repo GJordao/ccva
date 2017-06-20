@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { StackNavigator } from 'react-navigation';
+//Helpers
+import navigatorOptions from './../navigators/helpers/navigationOptions.helper';
 
 const styles = StyleSheet.create({
     icon: {
@@ -34,8 +36,5 @@ class ServicesScreenComponent extends Component {
 const navigatorRoute = {
     'Serviços e Projetos': { screen: ServicesScreenComponent }
 };
-
-const navigatorOptions = {
-}
 
 export default ServicesScreen = StackNavigator(navigatorRoute, navigatorOptions);
