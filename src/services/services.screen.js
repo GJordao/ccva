@@ -3,25 +3,13 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 //Helpers
 import navigatorOptions from './../navigators/helpers/navigationOptions.helper';
-
-const styles = StyleSheet.create({
-    icon: {
-        width: 35,
-        height: 35,
-        marginLeft: 5
-    },
-});
+//GLOBALS
+import NavigatorButton from './../GLOBALS/components/navigator.button';
 
 class ServicesScreenComponent extends Component {
     static navigationOptions = ({ navigation }) => ({
         title: 'Serviços e Projetos',
-        headerLeft:
-        <TouchableOpacity onPress={() => navigation.navigate('DrawerOpen')}>
-            <Image
-                source={require('./../icons/burger.png')}
-                style={styles.icon}
-            />
-        </TouchableOpacity>
+        headerLeft: <NavigatorButton navigation={navigation} />
     });
 
     render() {

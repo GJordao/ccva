@@ -4,12 +4,13 @@ import React, {
 import {
     View, Text, TouchableOpacity, StyleSheet
 } from 'react-native';
-
+//Globals
+import COLORS from './../../GLOBALS/colors';
 const style = StyleSheet.create({
     container: {
         flexDirection: 'column',
         justifyContent: 'flex-start',
-        backgroundColor: '#222222',
+        backgroundColor: COLORS.drawerMenu,
         height: '100%'
     },
     separator: {
@@ -17,12 +18,12 @@ const style = StyleSheet.create({
         marginBottom: 10,
         height: 1,
         width: "100%",
-        backgroundColor: "#424242",
+        backgroundColor: COLORS.appSeparator,
     },
     menu: {
         fontSize: 22,
         alignSelf: 'center',
-        color: 'white',
+        color: COLORS.drawerMenuTitle,
         marginBottom: 20
     },
     text: {
@@ -43,7 +44,7 @@ export default class Drawer extends Component {
     }
 
     renderRoutes(routeName) {
-        const color = routeName === this.props.activeItemKey ? '#6d6b6b' : '#424242';
+        const color = routeName === this.props.activeItemKey ? COLORS.drawerMenuActiveItemText : COLORS.drawerMenuInactiveActiveItemText;
         return <Text style={[style.text, {color: color}]}>{routeName}</Text>
     }
 

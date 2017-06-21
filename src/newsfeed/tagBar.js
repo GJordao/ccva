@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-
+//GLOBALS
+import COLORS from './../GLOBALS/colors';
 
 const styles = StyleSheet.create({
     container: {
         height: 40,
-        width: '100%'
+        width: '100%',
+        backgroundColor: COLORS.appBackground
     },
     tagContainer: {
-        backgroundColor: '#303235',        
+        backgroundColor: COLORS.newsFeedTagTodas,        
         padding: 5,
         marginLeft: 5
     },
     tag: {
         fontSize: 16,
-        color: 'white'
+        color: COLORS.newsFeedTagText
     }
 });
 

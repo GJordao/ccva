@@ -6,7 +6,8 @@ import {
     StyleSheet,
     TouchableOpacity
 } from 'react-native';
-
+//GLOBALS
+import COLORS from './../GLOBALS/colors';
 
 const styles = StyleSheet.create({
     banner: {
@@ -14,13 +15,13 @@ const styles = StyleSheet.create({
         width: '100%'
     },
     container: {
-        backgroundColor: 'white',
+        backgroundColor: COLORS.appBackground,
     },
     content: {
         fontSize: 18
     },
     separator: {
-        backgroundColor: '#424242',
+        backgroundColor: COLORS.appSeparator,
         flex: 1,
         height: 1,
         marginBottom: 5,
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
     },
     tag: {
         borderRadius: 3,
-        color: 'white',
+        color: COLORS.newsFeedTagText,
         fontWeight: 'bold',
         height: 25,
         marginRight: 5,
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
         paddingTop: 5,
     },
     title: {
-        color: 'black',
+        color: COLORS.newsFeedTitle,
         flex: 3,
         fontSize: 26,
     }

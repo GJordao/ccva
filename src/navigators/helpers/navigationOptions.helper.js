@@ -1,6 +1,8 @@
+import COLORS from './../../GLOBALS/colors';
+
 export default navigatiorOptions = {
     navigationOptions: {
-        headerTintColor: '#424242',
-        headerStyle: { backgroundColor: '#222222' }
+        headerTintColor: COLORS.navBarText,
+        headerStyle: { backgroundColor: COLORS.navBarBackground }
     }
 }

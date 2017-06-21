@@ -9,26 +9,21 @@ import News from './news';
 import NewsScreen from './news/news.screen';
 //API
 import ApiHelper from './../api';
+//GLOBALS
+import COLORS from './../GLOBALS/colors';
+import NavigatorButton from './../GLOBALS/components/navigator.button';
 
 const styles = StyleSheet.create({
-    icon: {
-        width: 35,
-        height: 35,
-        marginLeft: 5,
-        tintColor: 'white'
+    separator: {
+        height: 1,
+        backgroundColor: COLORS.appSeparator
     }
 });
 
 class NewsfeedScreenComponent extends Component {
     static navigationOptions = ({ navigation }) => ({
         title: 'Newsfeed',
-        headerLeft:
-        <TouchableOpacity onPress={() => navigation.navigate('DrawerOpen')}>
-            <Image
-                source={require('./../icons/burger.png')}
-                style={styles.icon}
-            />
-        </TouchableOpacity>
+        headerLeft: <NavigatorButton navigation={navigation} />
     });
 
     constructor(props) {
@@ -48,7 +43,12 @@ class NewsfeedScreenComponent extends Component {
         });
     }
 
-    // Change that view to be a separator
+    renderSeparator() {
+        return (
+            <View style={styles.separator} /> 
+        );
+    }
+
     render() {
         if (!this.state.hasLoaded) {
             return (<Text>Loading...</Text>);
@@ -56,7 +56,7 @@ class NewsfeedScreenComponent extends Component {
         return (
             <View>
                 <TagBar />
-                <View style={[{ height: 1 }, { backgroundColor: 'black' }]} />
+                {this.renderSeparator()}
                 <ScrollView>
                     {this.state.news.map((news) => {
                         return <News key={news.id} navigation={this.props.navigation} news={news} />

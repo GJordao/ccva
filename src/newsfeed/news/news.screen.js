@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import Moment from 'moment';
+//GLOBALS
+import COLORS from './../../GLOBALS/colors';
 
 const styles = StyleSheet.create({
     banner: {
@@ -9,12 +11,11 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     content: {
-        color: 'black',
         fontSize: 17,
         marginTop: 10,
     },
     container: {
-        backgroundColor: 'white',
+        backgroundColor: COLORS.appBackground,
         padding: 10,
     },
     date: {
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
     },
     tag: {
         borderRadius: 3,
-        color: 'white',
+        color: COLORS.newsFeedTagText,
         fontWeight: 'bold',
         height: 25,
         marginRight: 5,
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
         padding: 5,
     },
     title: {
-        color: 'black',
+        color: COLORS.newsFeedTitle,
         flex: 3,
         fontSize: 26,
     }
