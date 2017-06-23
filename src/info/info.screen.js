@@ -5,6 +5,8 @@ import { StackNavigator } from 'react-navigation';
 import navigatorOptions from './../navigators/helpers/navigationOptions.helper';
 //GLOBALS
 import NavigatorButton from './../GLOBALS/components/navigator.button';
+// Custom
+import Info from './components/info';
 
 class InfoScreenComponent extends Component {
     static navigationOptions = ({ navigation }) => ({
@@ -14,9 +16,7 @@ class InfoScreenComponent extends Component {
 
     render() {
         return (
-            <View>
-                <Text> Info Screen </Text>
-            </View>
+            <Info />
         );
     }
 }

@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { ScrollView, Text, Image, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 //Helpers
 import navigatorOptions from './../navigators/helpers/navigationOptions.helper';
 //GLOBALS
 import NavigatorButton from './../GLOBALS/components/navigator.button';
+
+const {height, width} = Dimensions.get('window');
+const styles = StyleSheet.create({
+    mapa: {
+        height: height,
+        width: width+100,
+    }
+});
 
 class MapScreenComponent extends Component {
     static navigationOptions = ({ navigation }) => ({
@@ -14,9 +22,9 @@ class MapScreenComponent extends Component {
 
     render() {
         return (
-            <View>
-                <Text> Map </Text>
-            </View>
+            <ScrollView style={{flex: 1}} horizontal={true}>
+                <Image style={styles.mapa} source={require('./../icons/mapa.png')} />
+            </ScrollView>
         );
     }
 }

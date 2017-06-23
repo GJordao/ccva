@@ -5,7 +5,8 @@ import { StackNavigator } from 'react-navigation';
 import navigatorOptions from './../navigators/helpers/navigationOptions.helper';
 //GLOBALS
 import NavigatorButton from './../GLOBALS/components/navigator.button';
-
+// Custom components
+import Calendar from './components/calendar';
 
 class CalendarScreenComponent extends Component {
     static navigationOptions = ({ navigation }) => ({
@@ -15,9 +16,7 @@ class CalendarScreenComponent extends Component {
 
     render() {
         return (
-            <View>
-                <Text> Calendario </Text>
-            </View>
+            <Calendar />
         );
     }
 }

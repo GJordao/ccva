@@ -5,6 +5,8 @@ import { StackNavigator } from 'react-navigation';
 import navigatorOptions from './../navigators/helpers/navigationOptions.helper';
 //GLOBALS
 import NavigatorButton from './../GLOBALS/components/navigator.button';
+// Custom components
+import Services from './components/services';
 
 class ServicesScreenComponent extends Component {
     static navigationOptions = ({ navigation }) => ({
@@ -14,9 +16,7 @@ class ServicesScreenComponent extends Component {
 
     render() {
         return (
-            <View>
-                <Text> Servicos e projetos</Text>
-            </View>
+            <Services />
         );
     }
 }
