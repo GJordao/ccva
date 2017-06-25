@@ -50,13 +50,8 @@ const styles = StyleSheet.create({
         color: COLORS.feedbackText,
         fontSize: 14
     },
-    title: {
-        alignSelf: 'center',
-        fontSize: 28,
-        marginBottom: 30
-    },
     question: {
-        fontSize: 26,
+        fontSize: 20,
         paddingBottom: 5
     },
     questionContainer: {
@@ -161,7 +156,6 @@ class FeedbackScreenComponent extends Component {
         }
         return (
             <ScrollView style={styles.container} >
-                <Text style={styles.title} >Feedback</Text>
                 <View style={styles.questionContainer}>
                     <View>
                         <Text style={styles.question} >Nome:</Text>
@@ -178,6 +172,7 @@ class FeedbackScreenComponent extends Component {
                         <Text style={styles.question} >Contacto:</Text>
                         <View style={styles.questionInputContainer}>
                             <TextInput
+                                keyboardType='numeric'
                                 underlineColorAndroid='transparent'
                                 style={styles.questionInput}
                                 value={this.state.contact}
@@ -189,6 +184,7 @@ class FeedbackScreenComponent extends Component {
                         <Text style={styles.question} >Mail:</Text>
                         <View style={styles.questionInputContainer}>
                             <TextInput
+                                keyboardType='email-address'
                                 underlineColorAndroid='transparent'
                                 style={styles.questionInput}
                                 value={this.state.mail}

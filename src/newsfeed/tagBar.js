@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     tagContainer: {
         backgroundColor: COLORS.newsFeedTagTodas,
         padding: 5,
-        marginLeft: 5
+        marginRight: 5
     },
     tag: {
         fontSize: 16,

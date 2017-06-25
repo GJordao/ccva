@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.appBackground,
     },
     content: {
+        color: COLORS.newsFeedContent,
         fontSize: 18
     },
     separator: {
@@ -72,7 +73,7 @@ export default class News extends Component {
         return (
             <View style={styles.container} >
                 <TouchableOpacity style={styles.newsContainer} onPress={() => { this.props.navigation.navigate('News', { news: this.props.news }) }}>
-                    <View><Text style={styles.title} >{this.props.news.title}</Text></View>
+                    <View><Text numberOfLines={1} style={styles.title} >{this.props.news.title}</Text></View>
                     <View>
                         <Image
                             source={{ uri: this.getImageUri(this.props.news) }}
@@ -80,7 +81,7 @@ export default class News extends Component {
                         />
                     </View>
                     <View>
-                        <Text numberOfLines={4} style={styles.content}>{this.props.news.content}</Text>
+                        <Text numberOfLines={6} style={styles.content}>{this.props.news.content}</Text>
                     </View>
                     <View style={styles.tagContainer} >
                         {tags.map((tag) => {

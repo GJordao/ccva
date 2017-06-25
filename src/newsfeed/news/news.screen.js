@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     content: {
+        color: COLORS.newsFeedContent,
         fontSize: 17,
         marginTop: 10,
     },
@@ -67,17 +68,9 @@ export default class NewsScreen extends Component {
         return (
             <ScrollView style={styles.container} >
                 <View style={styles.headerContainer} >
-                    <Text numberOfLines={1} style={styles.title} >
+                    <Text numberOfLines={3} style={styles.title} >
                         {news.title}
                     </Text>
-                    <Text style={styles.date} >
-                        {Moment(news.publish).format('DD.MM.YYYY')}
-                    </Text>
-                </View>
-                <View style={styles.tagContainer} >
-                    {tags.map((tag) => {
-                        return <Text key={tag.id} style={[styles.tag, { backgroundColor: tag.color }]}>{tag.name}</Text>
-                    })}
                 </View>
                 <Image
                     source={{ uri: this.getImageUri(news) }}
@@ -88,6 +81,15 @@ export default class NewsScreen extends Component {
                         {news.content}
                     </Text>
                 </View>
+                <View style={styles.tagContainer} >
+                    {tags.map((tag) => {
+                        return <Text key={tag.id} style={[styles.tag, { backgroundColor: tag.color }]}>{tag.name}</Text>
+                    })}
+                    <Text style={styles.date} >
+                        {Moment(news.publish).format('DD.MM.YYYY')}
+                    </Text>
+                </View>
+
             </ScrollView>
         );
     }

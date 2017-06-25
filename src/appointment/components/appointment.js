@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         fontSize: 14
     },
     question: {
-        fontSize: 26,
+        fontSize: 20,
         paddingBottom: 5
     },
     questionContainer: {
@@ -156,6 +156,7 @@ export default class Appointment extends Component {
                         <Text style={styles.question}> Email: </Text>
                         <View style={styles.questionInputContainer}>
                             <TextInput
+                                keyboardType='email-address'
                                 value={this.state.mail}
                                 onChangeText={(value) => { this.setState({ mail: value }); }}
                                 underlineColorAndroid='transparent'
@@ -167,6 +168,7 @@ export default class Appointment extends Component {
                         <Text style={styles.question}> Telemóvel: </Text>
                         <View style={styles.questionInputContainer}>
                             <TextInput
+                                keyboardType='numeric'
                                 value={this.state.phone}
                                 onChangeText={(value) => { this.setState({ phone: value }); }}
                                 underlineColorAndroid='transparent'

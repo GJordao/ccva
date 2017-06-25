@@ -25,12 +25,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
     },
-    title: {
-        fontSize: 24,
-        fontWeight: '300',
-        marginBottom: 20,
-        textAlign: 'center',
-    },
     header: {
         borderBottomWidth: 1,
         borderColor: COLORS.serviceAccordionBorderBottom,
@@ -132,7 +126,6 @@ export default class Info extends Component {
         return (
             <View style={styles.container}>
                 <ScrollView>
-                    <Text style={styles.title}>Informação Geral</Text>
                     <Collapsible collapsed={this.state.collapsed} align="center">
                         <View style={styles.content}>
                             <Text>Bacon ipsum dolor amet chuck turducken landjaeger tongue spare ribs</Text>
