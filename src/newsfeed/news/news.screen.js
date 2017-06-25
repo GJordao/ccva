@@ -58,6 +58,10 @@ export default class NewsScreen extends Component {
         super(props);
     }
 
+    getImageUri(news) {
+        return news.image === null ? 'http://www.ccvalg.pt/public/img/ccv-logo.png' : news.image;
+    }
+
     render() {
         const news = this.props.navigation.state.params.news;
         const tags = news.tags === null ? [] : JSON.parse(news.tags);
@@ -70,7 +74,7 @@ export default class NewsScreen extends Component {
                 </View>
 
                 <Image
-                    source={{ uri: 'http://images.twinkl.co.uk/image/upload/t_345,f_auto/image/4c/65/T-C-450-My-Weekend-News-Display-Banner.jpg' }}
+                    source={{ uri: this.getImageUri(news) }}
                     style={styles.banner}
                 />
                 <View>

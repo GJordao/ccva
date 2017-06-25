@@ -6,33 +6,16 @@ import {
     ScrollView,
     TouchableHighlight,
 } from 'react-native';
-
 import * as Animatable from 'react-native-animatable';
 import Collapsible from 'react-native-collapsible';
 import Accordion from 'react-native-collapsible/Accordion';
-
-const BACON_IPSUM = 'Bacon ipsum dolor amet chuck turducken landjaeger tongue spare ribs. Picanha beef prosciutto meatball turkey shoulder shank salami cupim doner jowl pork belly cow. Chicken shankle rump swine tail frankfurter meatloaf ground round flank ham hock tongue shank andouille boudin brisket. ';
-
-const CONTENT = [
-    {
-        title: 'Sobre o centro',
-        content: `
-        "Das Estrelas às Estrelas" é o tema central da exposição permanente no Centro Ciência Algarve Ciência Viva, onde o visitante é levado através de uma viagem que começa com as estrelas galácticas e o nosso planeta, e termina no sistema  lagunar da Ria Formosa e suas estrelas do mar.
-        A viagem é realizada através da interação com módulos relacionados com a física e a química da luz e da cor, uma sala dedicada à Ria Formosa, uma estufa inteligente, um jardim de energia infinita, e um terraço com uma vista deslumbrante sobre a Ria Formosa.`
-    },
-    {
-        title: 'Contactos',
-        content: BACON_IPSUM,
-    },
-    {
-        title: 'Horário',
-        content: BACON_IPSUM,
-    },
-    {
-        title: 'Preçário',
-        content: BACON_IPSUM,
-    }
-];
+// Helpers
+import infoDataHelper from './../helpers';
+// Custom components
+import About from './about';
+import Contacts from './contacts';
+import Schedule from './schedule';
+import Price from './price';
 
 const styles = StyleSheet.create({
     container: {
@@ -88,10 +71,47 @@ const styles = StyleSheet.create({
 });
 
 export default class Info extends Component {
-    state = {
-        activeSection: false,
-        collapsed: true,
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            hasLoaded: false,
+            activeSection: false,
+            collapsed: true,
+            data: {}
+        };
+    }
+
+    componentWillMount() {
+        infoDataHelper().then((data) => {
+            this.setState({
+                hasLoaded: true,
+                data: data
+            });
+        }).catch((err) => {
+            console.log(err);
+        });
+    }
+
+    getContent() {
+        return [
+            {
+                title: this.state.data.info.title,
+                content: <About data={this.state.data.info} />
+            },
+            {
+                title: 'Contactos',
+                content: <Contacts data={this.state.data.contacts} />
+            },
+            {
+                title: 'Horário',
+                content: <Schedule data={this.state.data.schedule} />
+            },
+            {
+                title: 'Preçário',
+                content: <Price data={this.state.data.price} />
+            }
+        ];
+    }
 
     _toggleExpanded = () => {
         this.setState({ collapsed: !this.state.collapsed });
@@ -112,12 +132,21 @@ export default class Info extends Component {
     _renderContent(section, i, isActive) {
         return (
             <Animatable.View duration={400} style={[styles.content, isActive ? styles.active : styles.inactive]} transition="backgroundColor">
-                <Animatable.Text animation={isActive ? 'bounceIn' : undefined} style={{fontSize: 18}}>{section.content}</Animatable.Text>
+                {section.content}
             </Animatable.View>
         );
     }
 
     render() {
+        if (!this.state.hasLoaded) {
+            return (
+                <View>
+                    <Text>
+                        Loading...
+                    </Text>
+                </View>
+            );
+        }
         return (
             <View style={styles.container}>
                 <ScrollView>
@@ -128,7 +157,7 @@ export default class Info extends Component {
                     </Collapsible>
                     <Accordion
                         activeSection={this.state.activeSection}
-                        sections={CONTENT}
+                        sections={this.getContent()}
                         renderHeader={this._renderHeader}
                         renderContent={this._renderContent}
                         duration={400}
