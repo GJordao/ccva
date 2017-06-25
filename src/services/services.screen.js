@@ -6,7 +6,7 @@ import navigatorOptions from './../navigators/helpers/navigationOptions.helper';
 //GLOBALS
 import NavigatorButton from './../GLOBALS/components/navigator.button';
 // Custom components
-import Services from './components/services';
+import ServicesProjects from './components/';
 
 class ServicesScreenComponent extends Component {
     static navigationOptions = ({ navigation }) => ({
@@ -16,7 +16,7 @@ class ServicesScreenComponent extends Component {
 
     render() {
         return (
-            <Services />
+            <ServicesProjects />
         );
     }
 }

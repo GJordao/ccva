@@ -16,24 +16,25 @@ import About from './about';
 import Contacts from './contacts';
 import Schedule from './schedule';
 import Price from './price';
+// GLOBALS
+import COLORS from './../../GLOBALS/colors';
 
 const styles = StyleSheet.create({
     container: {
+        backgroundColor: COLORS.appBackground,
         flex: 1,
         justifyContent: 'center',
-        backgroundColor: '#F5FCFF',
     },
     title: {
-        textAlign: 'center',
         fontSize: 24,
         fontWeight: '300',
         marginBottom: 20,
+        textAlign: 'center',
     },
     header: {
-        backgroundColor: '#F5FCFF',
-        padding: 10,
         borderBottomWidth: 1,
-        borderColor: 'gray'
+        borderColor: COLORS.serviceAccordionBorderBottom,
+        padding: 10,
     },
     headerText: {
         textAlign: 'center',
@@ -41,32 +42,14 @@ const styles = StyleSheet.create({
         fontWeight: '500',
     },
     content: {
-        padding: 20,
-        backgroundColor: '#fff',
+        padding: 20
     },
     active: {
-        backgroundColor: 'rgba(255,255,255,1)',
+        backgroundColor: COLORS.serviceAccordionActive,
     },
     inactive: {
-        backgroundColor: 'rgba(245,252,255,1)',
-    },
-    selectors: {
-        marginBottom: 10,
-        flexDirection: 'row',
-        justifyContent: 'center',
-    },
-    selector: {
-        backgroundColor: '#F5FCFF',
-        padding: 10,
-    },
-    activeSelector: {
-        fontWeight: 'bold',
-    },
-    selectTitle: {
-        fontSize: 14,
-        fontWeight: '500',
-        padding: 10,
-    },
+        backgroundColor: COLORS.serviceAccordionInactive,
+    }
 });
 
 export default class Info extends Component {

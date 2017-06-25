@@ -76,10 +76,10 @@ export default class Services extends Component {
     render() {
         return (
             <View>
-                <Text style={styles.title}>Serviços do Centro</Text>
+                <Text style={styles.title}>Projetos do Centro</Text>
                 <Accordion
                     activeSection={this.state.activeSection}
-                    sections={this.props.services}
+                    sections={this.props.projects}
                     renderHeader={this._renderHeader}
                     renderContent={this._renderContent}
                     duration={400}
