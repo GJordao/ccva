@@ -1,5 +1,9 @@
 [
     {
+        "merged": "/home/gjordao/Documents/Projects/React-Native/ccva/android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi/ic_launcher.png",
+        "source": "/home/gjordao/Documents/Projects/React-Native/ccva/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
         "merged": "/home/gjordao/Dropbox/ES/LES/ccva/android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi/ic_launcher.png",
         "source": "/home/gjordao/Dropbox/ES/LES/ccva/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
     }
