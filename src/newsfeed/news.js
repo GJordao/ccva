@@ -64,7 +64,7 @@ export default class News extends Component {
     }
 
     getImageUri(news) {
-        return news.image === null ? 'http://www.ccvalg.pt/public/img/ccv-logo.png' : news.image;
+        return news.image == null ? 'http://www.ccvalg.pt/public/img/ccv-logo.png' : news.image;
     }
 
     render() {
