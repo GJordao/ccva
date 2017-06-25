@@ -81,6 +81,7 @@ class FeedbackScreenComponent extends Component {
 
     constructor(props) {
         super(props);
+        this.submit = this.submit.bind(this);
         this.mapAnswerToQuestion = debounce(this.mapAnswerToQuestion, 500);
         this.state = {
             hasLoaded: false,
@@ -94,7 +95,7 @@ class FeedbackScreenComponent extends Component {
     }
 
     componentWillMount() {
-        ApiHelper.fetchContent('MTM1NTY4Mjg4MQ/form').then((response) => {
+        ApiHelper.fetchContent('MTM1NTY4Mjg4MQ/form/questions').then((response) => {
             this.setState({
                 hasLoaded: true,
                 questions: response
@@ -110,37 +111,44 @@ class FeedbackScreenComponent extends Component {
         });
     }
 
-    submit() {
+    validateData() {
         this.state.questions.forEach((question) => {
             if (!('answer' in question) || question.answer.length === 0) {
                 this.setState({
                     showMessage: true,
                     message: 'Todas as perguntas são obrigatórias com excepção dos dados pessoais'
                 });
-            } else {
-                const postData = {
-                    name: this.state.name,
-                    contact: this.state.contact,
-                    mail: this.state.mail,
-                    questions: this.state.questions
-                }
-                ApiHelper.postContent('MTM1NTY4Mjg4MQ/form/answer', postData).then((message) => {
-                    const emptiedQuestions = [];
-                    this.state.questions.forEach((question) => {
-                        question.answer = '';
-                        emptiedQuestions.push(question);
-                    });
-                    this.setState({
-                        showMessage: true,
-                        message: message,
-                        name: '',
-                        contact: '',
-                        mail: '',
-                        questions: emptiedQuestions
-                    });
-                });
+                return false;
             }
         });
+        return true;
+    }
+
+    submit() {
+        if (this.validateData()) {
+            const postData = {
+                name: this.state.name,
+                contact: this.state.contact,
+                mail: this.state.mail,
+                questions: this.state.questions
+            }
+            ApiHelper.postContent('MTM1NTY4Mjg4MQ/form/answer', postData).then((message) => {
+                const emptiedQuestions = [];
+                this.state.questions.forEach((question) => {
+                    question.answer = '';
+                    emptiedQuestions.push(question);
+                });
+                this.setState({
+                    showMessage: true,
+                    message: message,
+                    name: '',
+                    contact: '',
+                    mail: '',
+                    questions: emptiedQuestions
+                });
+            });
+        }
+
     }
 
     render() {
@@ -161,7 +169,7 @@ class FeedbackScreenComponent extends Component {
                             <TextInput
                                 underlineColorAndroid='transparent'
                                 style={styles.questionInput}
-                                value={this.state.name}                                
+                                value={this.state.name}
                                 onChangeText={(value) => { this.setState({ name: value }); }}
                             />
                         </View>
@@ -172,7 +180,7 @@ class FeedbackScreenComponent extends Component {
                             <TextInput
                                 underlineColorAndroid='transparent'
                                 style={styles.questionInput}
-                                value={this.state.contact}                                
+                                value={this.state.contact}
                                 onChangeText={(value) => { this.setState({ contact: value }); }}
                             />
                         </View>
