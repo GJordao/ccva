@@ -18,7 +18,8 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.appBackground,
     },
     content: {
-        fontSize: 18
+        fontSize: 18,
+        color: COLORS.newsFeedContent
     },
     separator: {
         backgroundColor: COLORS.appSeparator,
@@ -68,7 +69,7 @@ export default class News extends Component {
         return (
             <View style={styles.container} >
                 <TouchableOpacity style={styles.newsContainer} onPress={() => { this.props.navigation.navigate('News', { news: this.props.news }) }}>
-                    <View><Text style={styles.title} >{this.props.news.title}</Text></View>
+                    <View><Text numberOfLines={1} style={styles.title} >{this.props.news.title}</Text></View>
                     <View>
                         <Image
                             source={{ uri: 'http://images.twinkl.co.uk/image/upload/t_345,f_auto/image/4c/65/T-C-450-My-Weekend-News-Display-Banner.jpg' }}
@@ -76,7 +77,7 @@ export default class News extends Component {
                         />
                     </View>
                     <View>
-                        <Text numberOfLines={4} style={styles.content}>{this.props.news.content}</Text>
+                        <Text numberOfLines={6} style={styles.content}>{this.props.news.content}</Text>
                     </View>
                     <View style={styles.tagContainer} >
                         {tags.map((tag) => {

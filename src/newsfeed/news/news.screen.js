@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
     },
     content: {
         fontSize: 17,
+        color: COLORS.newsFeedContent,
         marginTop: 10,
     },
     container: {
@@ -63,18 +64,11 @@ export default class NewsScreen extends Component {
         return (
             <ScrollView style={styles.container} >
                 <View style={styles.headerContainer} >
-                    <Text numberOfLines={1} style={styles.title} >
+                    <Text numberOfLines={3} style={styles.title} >
                         {news.title}
                     </Text>
-                    <Text style={styles.date} >
-                        {Moment(news.publish).format('DD.MM.YYYY')}
-                    </Text>
                 </View>
-                <View style={styles.tagContainer} >
-                    {tags.map((tag) => {
-                        return <Text key={tag.id} style={[styles.tag, { backgroundColor: tag.color }]}>{tag.name}</Text>
-                    })}
-                </View>
+
                 <Image
                     source={{ uri: 'http://images.twinkl.co.uk/image/upload/t_345,f_auto/image/4c/65/T-C-450-My-Weekend-News-Display-Banner.jpg' }}
                     style={styles.banner}
@@ -84,6 +78,16 @@ export default class NewsScreen extends Component {
                         {news.content}
                     </Text>
                 </View>
+
+                <View style={styles.tagContainer} >
+                    {tags.map((tag) => {
+                        return <Text key={tag.id} style={[styles.tag, { backgroundColor: tag.color }]}>{tag.name}</Text>
+                    })}
+                    <Text style={styles.date} >
+                        {Moment(news.publish).format('DD.MM.YYYY')}
+                    </Text>
+                </View>
+
             </ScrollView>
         );
     }

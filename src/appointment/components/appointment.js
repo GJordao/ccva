@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         marginTop: 20
     },
     question: {
-        fontSize: 26,
+        fontSize: 20,
         paddingBottom: 5
     },
     questionContainer: {

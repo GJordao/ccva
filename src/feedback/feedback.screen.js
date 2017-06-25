@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
         marginBottom: 30
     },
     question: {
-        fontSize: 26,
+        fontSize: 20,
         paddingBottom: 5
     },
     questionContainer: {
@@ -82,7 +82,6 @@ class FeedbackScreenComponent extends Component {
         }
         return (
             <ScrollView style={styles.container} >
-                <Text style={styles.title} >Feedback</Text>
                 <View style={styles.questionContainer}>
                     {this.state.questions.map((question, index) => {
                         return (
