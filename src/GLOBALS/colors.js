@@ -21,4 +21,8 @@ export default COLORS = {
     feedbackContainerBackground: '#fffad8',
     feedbackContainerBorder: '#fcf5c9',
     feedbackText: '#000000',
+    serviceAccordionActive: '#f5fcff',
+    serviceAccordionInactive: '#f5fcff',
+    serviceAccordionBorderBottom: 'gray',
+    serviceTitle: '#000000'
 }
