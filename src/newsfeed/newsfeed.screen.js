@@ -54,15 +54,15 @@ class NewsfeedScreenComponent extends Component {
             return (<Text>Loading...</Text>);
         }
         return (
-            <View>
+            <ScrollView>
                 <TagBar />
                 {this.renderSeparator()}
-                <ScrollView>
+                <View>
                     {this.state.news.map((news) => {
                         return <News key={news.id} navigation={this.props.navigation} news={news} />
                     })}
-                </ScrollView>
-            </View>
+                </View>
+            </ScrollView>
         );
     }
 }

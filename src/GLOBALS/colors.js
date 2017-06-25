@@ -11,4 +11,13 @@ export default COLORS = {
     navBarIconTint: "#FFFFFF",
     navBarText: "#424242",
     navBarBackground: "#222222",
+    priceTableBorderColor: '#424242',
+    calendarItemBackground: '#FFFFFF',
+    calendarItemTitle: '#000000',
+    submitButton: '#437db7',
+    submitButtonBorder: '#306aa5',
+    submitButtonText: '#FFFFFF',
+    feedbackContainerBackground: '#fffad8',
+    feedbackContainerBorder: '#fcf5c9',
+    feedbackText: '#000000',
 }

@@ -63,6 +63,10 @@ export default class News extends Component {
         );
     }
 
+    getImageUri(news) {
+        return news.image === null ? 'http://www.ccvalg.pt/public/img/ccv-logo.png' : news.image;
+    }
+
     render() {
         const tags = this.props.news.tags === null ? [] : JSON.parse(this.props.news.tags);
         return (
@@ -71,7 +75,7 @@ export default class News extends Component {
                     <View><Text style={styles.title} >{this.props.news.title}</Text></View>
                     <View>
                         <Image
-                            source={{ uri: 'http://images.twinkl.co.uk/image/upload/t_345,f_auto/image/4c/65/T-C-450-My-Weekend-News-Display-Banner.jpg' }}
+                            source={{ uri: this.getImageUri(this.props.news) }}
                             style={styles.banner}
                         />
                     </View>
